@@ -11,10 +11,21 @@ import java.util.Scanner;
 public class EmployeePayrollDBService {
 
 	private PreparedStatement employeePayrollDataStatement;
+	private static EmployeePayrollDBService employeePayrollDBService;
 
 	Connection connection = null;
 	Statement statement = null;
 	Scanner scanner = new Scanner(System.in);
+	
+	 public EmployeePayrollDBService() {
+	    }
+
+	    public static EmployeePayrollDBService getInstance() {
+	        if (employeePayrollDBService == null) {
+	            employeePayrollDBService = new EmployeePayrollDBService();
+	        }
+	        return employeePayrollDBService;
+	    }
 
 	private Connection getConnection() throws SQLException {
 		String dbURL = "jdbc:mysql://localhost:3306/payroll_service?useSSL=false";
