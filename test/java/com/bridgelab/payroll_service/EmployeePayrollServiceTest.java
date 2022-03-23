@@ -34,5 +34,39 @@ public class EmployeePayrollServiceTest {
 	        List<EmployeePayrollData> employeePayrollDataByGivenDataRange = employeePayrollService.getEmployeePayrollDataByGivenDataRange(LocalDate.of(2018, 01, 01), LocalDate.now());
 	        Assert.assertEquals(employeePayrollDataByGivenDataRange.get(0),employeePayrollData.get(0));
 	    }
+	 @Test
+	    public void givenEmployeePayrollData_ShouldReturnTheAverageOfTheSalariesOfGender() {
+	        EmployeePayrollService employeePayrollService = new EmployeePayrollService();
+	        double employeePayrollData1 = employeePayrollService.performVariousOperations("AVG", "M");
+	        Assert.assertEquals(employeePayrollData1,2000000.0,0.0);
+	    }
+
+	    @Test
+	    public void givenEmployeePayrollData_ShouldReturnTheSumOfTheSalariesOfGender() {
+	        EmployeePayrollService employeePayrollService = new EmployeePayrollService();
+	        double employeePayrollData1 = employeePayrollService.performVariousOperations("SUM", "M");
+	        Assert.assertEquals(employeePayrollData1,4000000.0,0.0);
+	    }
+
+	    @Test
+	    public void givenEmployeePayrollData_ShouldReturnTheMaxOfTheSalariesOfGender() {
+	        EmployeePayrollService employeePayrollService = new EmployeePayrollService();
+	        double employeePayrollData1 = employeePayrollService.performVariousOperations("MAX", "M");
+	        Assert.assertEquals(employeePayrollData1,3000000.0,0.0);
+	    }
+
+	    @Test
+	    public void givenEmployeePayrollData_ShouldReturnTheMinOfTheSalariesOfGender() {
+	        EmployeePayrollService employeePayrollService = new EmployeePayrollService();
+	        double employeePayrollData1 = employeePayrollService.performVariousOperations("MIN", "M");
+	        Assert.assertEquals(employeePayrollData1,1000000.0,0.0);
+	    }
+
+	    @Test
+	    public void givenEmployeePayrollData_ShouldReturnTheCountOfTheEmployeeByGender() {
+	        EmployeePayrollService employeePayrollService = new EmployeePayrollService();
+	        double employeePayrollData1 = employeePayrollService.performVariousOperations("COUNT", "M");
+	        Assert.assertEquals(employeePayrollData1,2,0.0);
+	    }
 	 
 }
