@@ -12,28 +12,28 @@ public class DBConnection {
 		String username = "root";
 		String password = "Rash@123";
 		Connection connection;
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			System.out.println("Driver loaded!");
-		} catch (ClassNotFoundException e) {
-			throw new IllegalStateException("Cannot find the driver in the classpath", e);
-		}
-		listDrivers();
-		try {
-			System.out.println("connecting to the database:" + dbURL);
-			connection = DriverManager.getConnection(dbURL, username, password);
-			System.out.println("Connection is successful!!!!" +connection);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            System.out.println("Driver loaded!");
+        } catch (ClassNotFoundException e) {
+            throw new IllegalStateException("Cannot find the driver in the classpath",e);
+        }
+        listDrivers();
+        try {
+            System.out.println("connecting to the database:" + dbURL);
+            connection = DriverManager.getConnection(dbURL, username, password);
+            System.out.println("connection is successful!!!!" + connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	private static void listDrivers() {
-		Enumeration<Driver> driverList = DriverManager.getDrivers();
-		while (driverList.hasMoreElements()) {
-			Driver driverClass = driverList.nextElement();
-			System.out.println(driverClass.getClass().getName());
-		}
-	}
+    private static void listDrivers() {
+        Enumeration<Driver> driverList = DriverManager.getDrivers();
+        while (driverList.hasMoreElements()) {
+            Driver driverClass = driverList.nextElement();
+            System.out.println(driverClass.getClass().getName());
+        }
+    }
+
 }
-
