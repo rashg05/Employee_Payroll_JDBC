@@ -69,7 +69,7 @@ public class EmployeePayrollDBService {
 	}
 
 	private int updateDataUsingStatement(String name, double salary) {
-		String query = String.format("update payroll_service set salary = %.2f where name= '%s';", salary, name);
+		String query = String.format("update employee_payroll set salary = %.2f where name= '%s';", salary, name);
 		try (Connection connection = this.getConnection()) {
 			Statement statement = connection.createStatement();
 			return statement.executeUpdate(query);
@@ -113,7 +113,7 @@ public class EmployeePayrollDBService {
 	private void prepareStatementForEmployeeData() {
 		try {
 			connection = this.getConnection();
-			String sql = "SELECT * FROM payroll_service WHERE name = ?";
+			String sql = "SELECT * FROM employee_payroll WHERE name = ?";
 			employeePayrollDataStatement = connection.prepareStatement(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -133,7 +133,7 @@ public class EmployeePayrollDBService {
     }
 	
 	 public double performVariousOperationsOf(String average, String gender) {
-	        String query = String.format("select %s(salary),gender from payroll_service where gender = '%s' group by gender;",
+	        String query = String.format("select %s(salary),gender from employee_payroll where gender = '%s' group by gender;",
 	                average, gender);
 	        try (Connection connection = this.getConnection()) {
 	            Statement statement = connection.createStatement();
